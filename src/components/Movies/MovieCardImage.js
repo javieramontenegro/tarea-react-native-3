@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableHighlight, Image, StyleSheet } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 const styles = StyleSheet.create({
   image: {
     borderTopLeftRadius: 15,
@@ -14,16 +14,27 @@ const styles = StyleSheet.create({
 const MovieCardImage = ({
   validImage,
   posterurl,
-  onError = () => { },
-  onLoadEnd = () => { },
-  onLongPress = () => { },
+  title,
+  storyline,
+  onError = () => {},
+  onLoadEnd = () => {},
+  onLongPress = () => {},
 }) => {
   // puede ir código
+  /* console.log(navigation); */
+  const navigation = useNavigation();
+
   return (
     <TouchableHighlight
       onLongPress={onLongPress}
-      underlayColor="transparent"
-    >
+      onPress={() => {
+        navigation.navigate('Details', {
+          posterurl: posterurl,
+          title: title,
+          storyline: storyline,
+        });
+      }}
+      underlayColor="transparent">
       <Image
         style={styles.image}
         source={

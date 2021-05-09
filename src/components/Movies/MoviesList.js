@@ -53,6 +53,7 @@ export default class MoviesList extends PureComponent {
 
   render() {
     const { modalActive, moviesGenres, movies } = this.state;
+    const { navigation } = this.props;
 
     return (
       <>
@@ -82,6 +83,7 @@ export default class MoviesList extends PureComponent {
                 actors={actors}
                 storyline={storyline}
                 genres={genres}
+                navigation={navigation}
               />
             );
           }}
